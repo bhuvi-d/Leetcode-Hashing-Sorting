@@ -3,4 +3,4 @@ Solving LeetCode questions in a more methodic way
 
 
 
-![Questions](./Screenshot%202026-04-24%20140244.png)
+![Questions](./Screenshot 2026-05-20 220509.png)
