@@ -1,0 +1,78 @@
+class Solution {
+
+    public String minWindow(String s, String t) {
+
+        int left = 0;
+        int right = 0;
+
+        String x = "";
+
+        HashMap<Character,Integer> map =
+                new HashMap<>();
+
+     
+        for(int i=0;i<t.length();i++){
+
+            map.put(
+                t.charAt(i),
+                map.getOrDefault(
+                    t.charAt(i),0)+1);
+        }
+
+        int required = 0;
+        int maxrequired = map.size();
+
+        while(right < s.length()){
+
+            char rc = s.charAt(right);
+
+            
+            if(map.containsKey(rc)){
+
+                map.put(
+                    rc,
+                    map.get(rc)-1);
+
+                if(map.get(rc)==0){
+
+                    required++;
+                }
+            }
+
+           
+            while(required==maxrequired){
+
+               
+                if(x.equals("") ||
+                   right-left+1 < x.length()){
+
+                    x = s.substring(
+                            left,
+                            right+1);
+                }
+
+                char lc =
+                        s.charAt(left);
+
+              
+                if(map.containsKey(lc)){
+
+                    map.put(
+                        lc,
+                        map.get(lc)+1);
+
+                    if(map.get(lc)>0){
+
+                        required--;
+                    }
+                }
+
+                left++;
+            }
+
+            right++;
+        }
+
+        return x;
+    }
+}
